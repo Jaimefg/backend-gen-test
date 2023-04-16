@@ -1,0 +1,29 @@
+version: '3.9'
+services:
+  genially-app:
+    image: genially/test:latest
+    container_name: geniallyTest
+    build:
+      network: host
+      context: .
+      dockerfile: ./Dockerfile
+      target: development
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - "3000:3000"
+      - "9267:9267"
+    depends_on:
+      - mongodb
+  mongodb:
+    image: mongodb/mongodb-community-server:6.0-ubi8
+    environment:
+      - MONGODB_INITDB_ROOT_USERNAME=user
+      - MONGODB_INITDB_ROOT_PASSWORD=pass
+    ports:
+      - "27017:27017"
+    volumes:
+      - type: bind
+        source: ./data
+        target: /data/db

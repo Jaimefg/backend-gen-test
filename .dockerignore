@@ -1,0 +1,15 @@
+**/.classpath
+**/.dockerignore
+**/.env
+**/.git
+**/.gitignore
+**/docker-compose*
+**/compose*
+**/Dockerfile*
+**/node_modules
+**/data
+**/npm-debug.log
+**/.npmrc
+README.md
+**/mongodb/backup*gz
+**/mongodb/*.csv
